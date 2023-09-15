@@ -53,7 +53,11 @@ def customers_gender_segment(gender, segment, limit):
     db = establish_sql_connection()
     cursor = db.cursor()
     #### ADD YOUR SQL QUERY BELOW ####
-    #query = 
+    query = "SELECT *\
+        FROM customers\
+            WHERE Gender=gender AND Segment=segment\
+            ORDER BY customer_id DESC\
+                LIMIT limit"
 
     cursor.execute(query)
     result = cursor.fetchall()
@@ -107,7 +111,10 @@ def delete_customer():
     cursor = db.cursor()
 
     #### ADD YOUR SQL QUERY BELOW ####
-    #query = 
+    query = f"\
+    DELETE FROM customers\
+        WHERE customer_id={customer_id}\
+    "
 
     cursor.execute(query)
     db.commit()
