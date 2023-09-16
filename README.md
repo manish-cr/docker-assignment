@@ -1,5 +1,6 @@
 Things to do:
 - [x] Add decorators on customer.py
+- [ ] NOTE: can't seem to make a connection on mySQL, have to debug that
 - [] complete `docker-compose.yaml`
 - [] complete `user_dockerfile`
 - [] In order to get the cron job working, the cron table on the user container needs to be updated. One
