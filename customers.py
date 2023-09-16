@@ -21,11 +21,13 @@ def establish_sql_connection():
     )
     return db
 
+@app.route("/")
 def home():
     return render_template(
         'home.html'
     )
 
+@app.route("/customers")
 def customers():
     db = establish_sql_connection()
     cursor = db.cursor()
@@ -45,6 +47,7 @@ def customers():
         'customers.html', users = df.to_html(index=False)
     )
 
+@app.route("/customers_gender_segment")
 def customers_gender_segment(gender, segment, limit):
     gender = request.args.get('gender')
     segment = request.args.get('segment')
@@ -70,7 +73,7 @@ def customers_gender_segment(gender, segment, limit):
 
     return jsonify(df.to_json(orient="records", index=False))
 
-
+@app.route("/add_customer")
 def add_customer():
     customer_id = request.form['customer_id']
     customer_name = request.form['customer_name']
@@ -103,7 +106,7 @@ def add_customer():
 
     return f"Record {customer_id} has been added."
 
-
+@app.route("/delete_customer")
 def delete_customer():
     customer_id = int(request.get_json()['customer_id'])
 
