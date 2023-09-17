@@ -7,7 +7,9 @@ RUN pip3 install --upgrade pip
 ### TO DO: ###
 # 1. Create /app directory, 2. copy python script and 3. init.sh into /app
 ## ADD YOUR INSTRUCTIONS BELOW ##
-
+RUN mkdir /app
+COPY upload.py /app/
+COPY init.sh /app/
 
 RUN chmod +x /app/init.sh
 RUN dos2unix /app/init.sh
