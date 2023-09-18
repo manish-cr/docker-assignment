@@ -13,6 +13,7 @@ COPY init.sh /app/
 
 RUN chmod +x /app/init.sh
 RUN dos2unix /app/init.sh
+COPY sample_crontable.txt /app/
 
 ## INCLUDE THE FOLLOWING LINE IF YOU ARE USING sample_crontable.txt
 RUN dos2unix /app/sample_crontable.txt
