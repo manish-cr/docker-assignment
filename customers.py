@@ -56,11 +56,11 @@ def customers_gender_segment(gender, segment, limit):
     db = establish_sql_connection()
     cursor = db.cursor()
     #### ADD YOUR SQL QUERY BELOW ####
-    query = "SELECT *\
+    query = f"SELECT *\
         FROM customers\
-            WHERE Gender=gender AND Segment=segment\
+            WHERE Gender={gender} AND Segment={segment}\
             ORDER BY customer_id DESC\
-                LIMIT limit"
+                LIMIT {limit}"
 
     cursor.execute(query)
     result = cursor.fetchall()
