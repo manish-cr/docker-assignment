@@ -47,8 +47,8 @@ def customers():
         'customers.html', users = df.to_html(index=False)
     )
 
-@app.route("/customers_gender_segment")
-def customers_gender_segment(gender, segment, limit):
+@app.route("/customers_gender_segment", methods=["GET"])
+def customers_gender_segment():
     gender = request.args.get('gender')
     segment = request.args.get('segment')
     limit = request.args.get('limit')
@@ -56,11 +56,11 @@ def customers_gender_segment(gender, segment, limit):
     db = establish_sql_connection()
     cursor = db.cursor()
     #### ADD YOUR SQL QUERY BELOW ####
-    query = f"SELECT *\
-        FROM customers\
-            WHERE Gender={gender} AND Segment={segment}\
-            ORDER BY customer_id DESC\
-                LIMIT {limit}"
+    query=f"SELECT * FROM\
+        customers WHERE customer_gender='{gender}'\
+            AND customer_segment='{segment}'\
+                ORDER BY customer_id DESC\
+                    LIMIT {limit}"
 
     cursor.execute(query)
     result = cursor.fetchall()
