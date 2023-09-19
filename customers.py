@@ -73,7 +73,7 @@ def customers_gender_segment():
 
     return jsonify(df.to_json(orient="records", index=False))
 
-@app.route("/add_customer")
+@app.route("/add_customer", methods=["POST"])
 def add_customer():
     customer_id = request.form['customer_id']
     customer_name = request.form['customer_name']
@@ -106,7 +106,7 @@ def add_customer():
 
     return f"Record {customer_id} has been added."
 
-@app.route("/delete_customer")
+@app.route("/delete_customer", methods=["DELETE"])
 def delete_customer():
     customer_id = int(request.get_json()['customer_id'])
 
