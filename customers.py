@@ -47,11 +47,11 @@ def customers():
         'customers.html', users = df.to_html(index=False)
     )
 
-@app.route("/customers_gender_segment", methods=["GET"])
+@app.route("/get_customers_gender_segment", methods=["GET"])
 def customers_gender_segment():
-    gender = request.args.get('gender')
-    segment = request.args.get('segment')
-    limit = request.args.get('limit')
+    gender = request.args.get('gender', get_defaults['gender'])
+    segment = request.args.get('segment', get_defaults['segment'])
+    limit = request.args.get('limit', get_defaults['limit'])
 
     db = establish_sql_connection()
     cursor = db.cursor()
